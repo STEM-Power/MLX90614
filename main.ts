@@ -61,10 +61,13 @@ let irData = pins.createBuffer(1);
     //% blockId="readRegister" block="Read internal register 0x06"
     export function getIR(): number {
         serial.setRxBufferSize(100)
-        let ircmdBuffer: [0x53, 0x06, 0x07, 0x08, 0x50]
-        let irBuffer: number[] = []
-        let cmdir = pins.createBufferFromArray(ircmdBuffer)
-        serial.writeBuffer(cmdir);
+        let serialBuffer = pins.createBuffer(5);
+        serialBuffer[0] = 0x53
+        serialBuffer[1] = 0x06
+        serialBuffer[2] = 0x07
+        serialBuffer[3] = 0x08
+        serialBuffer[4] = 0x50
+        serial.writeBuffer(serialBuffer)
         basic.pause(1);
         receivedBuffer = serial.readBuffer(8);;
             for (let i = 0; i < 3; i++) {
