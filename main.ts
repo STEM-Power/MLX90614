@@ -10,7 +10,7 @@
 //% weight=100 color=#0975ff icon="\uf2c9" block="MLX90614"
 namespace MLX90614 {
 let ToData = pins.createBuffer(2);
-let receivedBuffer = pins.createBuffer(16);
+let receivedBuffer = pins.createBuffer(32);
 let irData = pins.createBuffer(1);
 /**
      * Setup MLX90614 module Tx Rx to micro:bit pins.
