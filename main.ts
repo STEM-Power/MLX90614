@@ -62,7 +62,7 @@ let irData = pins.createBuffer(1);
     export function getIR(): number {
         serial.setRxBufferSize(100)
         let serialBuffer = pins.createBuffer(5);
-        serialBuffer[0] = 0x53
+        serialBuffer[0] = 0x52
         serialBuffer[1] = 0x06
         serialBuffer[2] = 0x07
         serialBuffer[3] = 0x08
