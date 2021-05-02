@@ -34,10 +34,17 @@ let irData = pins.createBuffer(1);
     //% blockId="getTo" block="Object Temperature"
     export function getTo(): number {
         serial.setRxBufferSize(100)
-        let TocmdBuffer: [0x53, 0xB4, 0x02, 0x07, 0x53, 0xB5, 0x04, 0x50]
+        let serialBuffer = pins.createBuffer(8);
+        serialBuffer[0] = 0x53
+        serialBuffer[1] = 0xB4
+        serialBuffer[2] = 0x02
+        serialBuffer[3] = 0x07
+        serialBuffer[4] = 0x53
+        serialBuffer[5] = 0xB5
+        serialBuffer[6] = 0x04
+        serialBuffer[7] = 0x50
+        serial.writeBuffer(serialBuffer)
         let ToBuffer: number[] = []
-        let cmdTo = pins.createBufferFromArray(TocmdBuffer)
-        serial.writeBuffer(cmdTo);
         basic.pause(1);
         receivedBuffer = serial.readBuffer(8);;
             for (let i = 0; i < 2; i++) {
