@@ -50,7 +50,7 @@ let irData = pins.createBuffer(1);
         return to
 	}
 
-//% weight=90
+//% weight=89
     //% blockId="readRegister" block="Read internal register 0x06"
     export function getIR(): number {
         serial.setRxBufferSize(100)
