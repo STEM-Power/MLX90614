@@ -9,7 +9,8 @@
  */
 //% weight=100 color=#0975ff icon="\uf2c9" block="MLX90614"
 namespace MLX90614 {
-let ToData = pins.createBuffer(2);
+let ObjTData = pins.createBuffer(2);
+let AmbTData = pins.createBuffer(2);
 let receivedBuffer = pins.createBuffer(32);
 let irData = pins.createBuffer(1);
 /**
@@ -31,8 +32,8 @@ let irData = pins.createBuffer(1);
 
 
 //% weight=99
-    //% blockId="getTo" block="Object Temperature"
-    export function getTo(): number {
+    //% blockId="getObjT" block="Object Temperature"
+    export function getObjT(): number {
         serial.setRxBufferSize(100)
         let serialBuffer = pins.createBuffer(8);
         serialBuffer[0] = 0x53
@@ -44,22 +45,22 @@ let irData = pins.createBuffer(1);
         serialBuffer[6] = 0x04
         serialBuffer[7] = 0x50
         serial.writeBuffer(serialBuffer)
-        let ToBuffer: number[] = []
+        let ObjTBuffer: number[] = []
         basic.pause(1);
         receivedBuffer = serial.readBuffer(2);;
             for (let i = 0; i < 2; i++) {
-                ToData[i] = receivedBuffer[0 + i];
+                ObjTData[i] = receivedBuffer[0 + i];
             }
 
-        let to = (ToData[1]<<8 | ToData[0])
-        to *= .02
-        to -= 273.15
-        return to
+        let ObjT = (ObjTData[1]<<8 | ObjTData[0])
+        ObjT *= .02
+        ObjT -= 273.15
+        return ObjT
 	}
 
 //% weight=98
-    //% blockId="getTa" block="Ambient Temperature"
-    export function getTa(): number {
+    //% blockId="getAmbT" block="Ambient Temperature"
+    export function getAmbT(): number {
         serial.setRxBufferSize(100)
         let serialBuffer = pins.createBuffer(8);
         serialBuffer[0] = 0x53
@@ -71,17 +72,17 @@ let irData = pins.createBuffer(1);
         serialBuffer[6] = 0x04
         serialBuffer[7] = 0x50
         serial.writeBuffer(serialBuffer)
-        let TaBuffer: number[] = []
+        let AmbTBuffer: number[] = []
         basic.pause(1);
         receivedBuffer = serial.readBuffer(2);;
             for (let i = 0; i < 2; i++) {
-                TaData[i] = receivedBuffer[0 + i];
+                AmbTData[i] = receivedBuffer[0 + i];
             }
 
-        let ta = (TaData[1]<<8 | TaData[0])
-        ta *= .02
-        ta -= 273.15
-        return ta
+        let AmbT = (AmbTData[1]<<8 | AmbTData[0])
+        AmbT *= .02
+        AmbT -= 273.15
+        return AmbT
 	}
 
 
