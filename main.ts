@@ -30,7 +30,7 @@ let irData = pins.createBuffer(1);
     }
 
 
-//% weight=90
+//% weight=99
     //% blockId="getTo" block="Object Temperature"
     export function getTo(): number {
         serial.setRxBufferSize(100)
@@ -56,6 +56,34 @@ let irData = pins.createBuffer(1);
         to -= 273.15
         return to
 	}
+
+//% weight=98
+    //% blockId="getTa" block="Ambient Temperature"
+    export function getTa(): number {
+        serial.setRxBufferSize(100)
+        let serialBuffer = pins.createBuffer(8);
+        serialBuffer[0] = 0x53
+        serialBuffer[1] = 0xB4
+        serialBuffer[2] = 0x02
+        serialBuffer[3] = 0x06
+        serialBuffer[4] = 0x53
+        serialBuffer[5] = 0xB5
+        serialBuffer[6] = 0x04
+        serialBuffer[7] = 0x50
+        serial.writeBuffer(serialBuffer)
+        let TaBuffer: number[] = []
+        basic.pause(1);
+        receivedBuffer = serial.readBuffer(2);;
+            for (let i = 0; i < 2; i++) {
+                TaData[i] = receivedBuffer[0 + i];
+            }
+
+        let ta = (TaData[1]<<8 | TaData[0])
+        ta *= .02
+        ta -= 273.15
+        return ta
+	}
+
 
 //% weight=89
     //% blockId="readRegister" block="Read internal register 0x06"
