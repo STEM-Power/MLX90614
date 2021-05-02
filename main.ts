@@ -46,7 +46,7 @@ let irData = pins.createBuffer(1);
         serial.writeBuffer(serialBuffer)
         let ToBuffer: number[] = []
         basic.pause(1);
-        receivedBuffer = serial.readBuffer(8);;
+        receivedBuffer = serial.readBuffer(2);;
             for (let i = 0; i < 2; i++) {
                 ToData[i] = receivedBuffer[0 + i];
             }
