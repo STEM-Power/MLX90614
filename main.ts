@@ -9,10 +9,10 @@
  */
 //% weight=100 color=#0975ff icon="\uf2c9" block="MLX90614"
 namespace MLX90614 {
-let ObjTData = pins.createBuffer(2);
-let AmbTData = pins.createBuffer(2);
+let ObjTData = pins.createBuffer(4);
+let AmbTData = pins.createBuffer(4);
 let receivedBuffer = pins.createBuffer(32);
-let irData = pins.createBuffer(1);
+let irData = pins.createBuffer(2);
 /**
      * Setup MLX90614 module Tx Rx to micro:bit pins.
      * 設定MLX90614的Tx、Rx連接腳位
