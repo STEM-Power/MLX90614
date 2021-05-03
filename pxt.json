@@ -1,6 +1,6 @@
 {
     "name": "MLX90614",
-    "description": "",
+    "description": "STEM Power Infra Red Thermometer Module Makecode Extension",
     "dependencies": {
         "core": "*",
         "radio": "*",
