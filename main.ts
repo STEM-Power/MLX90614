@@ -9,7 +9,7 @@
  */
 //% weight=100 color=#0975ff icon="\uf2c9" block="MLX90614"
 namespace MLX90614 {
-let ObjTData = pins.createBuffer(4);
+let ObjTData = pins.createBuffer(8);
 let AmbTData = pins.createBuffer(4);
 let receivedBuffer = pins.createBuffer(32);
 let irData = pins.createBuffer(2);
@@ -47,8 +47,8 @@ let irData = pins.createBuffer(2);
         serial.writeBuffer(serialBuffer)
         let ObjTBuffer: number[] = []
         basic.pause(1);
-        receivedBuffer = serial.readBuffer(8);;
-            for (let i = 0; i < 4; i++) {
+        receivedBuffer = serial.readBuffer(4);;
+            for (let i = 0; i < 8; i++) {
                 ObjTData[i] = receivedBuffer[0 + i];
             }
 
@@ -74,8 +74,8 @@ let irData = pins.createBuffer(2);
         serial.writeBuffer(serialBuffer)
         let AmbTBuffer: number[] = []
         basic.pause(1);
-        receivedBuffer = serial.readBuffer(8);;
-            for (let i = 0; i < 4; i++) {
+        receivedBuffer = serial.readBuffer(4);;
+            for (let i = 0; i < 8; i++) {
                 AmbTData[i] = receivedBuffer[0 + i];
             }
 
