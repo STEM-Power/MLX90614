@@ -38,7 +38,7 @@ let irData = pins.createBuffer(1);
         let serialBuffer = pins.createBuffer(8);
         serialBuffer[0] = 0x53
         serialBuffer[1] = 0xB4
-        serialBuffer[2] = 0x02
+        serialBuffer[2] = 0x01
         serialBuffer[3] = 0x07
         serialBuffer[4] = 0x53
         serialBuffer[5] = 0xB5
@@ -47,7 +47,7 @@ let irData = pins.createBuffer(1);
         serial.writeBuffer(serialBuffer)
         let ObjTBuffer: number[] = []
         basic.pause(1);
-        receivedBuffer = serial.readBuffer(2);;
+        receivedBuffer = serial.readBuffer(4);;
             for (let i = 0; i < 2; i++) {
                 ObjTData[i] = receivedBuffer[0 + i];
             }
@@ -65,7 +65,7 @@ let irData = pins.createBuffer(1);
         let serialBuffer = pins.createBuffer(8);
         serialBuffer[0] = 0x53
         serialBuffer[1] = 0xB4
-        serialBuffer[2] = 0x02
+        serialBuffer[2] = 0x01
         serialBuffer[3] = 0x06
         serialBuffer[4] = 0x53
         serialBuffer[5] = 0xB5
@@ -74,7 +74,7 @@ let irData = pins.createBuffer(1);
         serial.writeBuffer(serialBuffer)
         let AmbTBuffer: number[] = []
         basic.pause(1);
-        receivedBuffer = serial.readBuffer(2);;
+        receivedBuffer = serial.readBuffer(4);;
             for (let i = 0; i < 2; i++) {
                 AmbTData[i] = receivedBuffer[0 + i];
             }
