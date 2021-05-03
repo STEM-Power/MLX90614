@@ -90,10 +90,10 @@ let irData = pins.createBuffer(1);
     //% blockId="readRegister" block="Read internal register 0x06"
     export function getIR(): number {
         serial.setRxBufferSize(100)
-        let serialBuffer = pins.createBuffer(5);
+        let serialBuffer = pins.createBuffer(3);
         serialBuffer[0] = 0x52
         serialBuffer[1] = 0x06
-        serialBuffer[4] = 0x50
+        serialBuffer[2] = 0x50
         serial.writeBuffer(serialBuffer)
         basic.pause(1);
         receivedBuffer = serial.readBuffer(2);;
