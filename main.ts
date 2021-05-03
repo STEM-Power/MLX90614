@@ -10,7 +10,7 @@
 //% weight=100 color=#0975ff icon="\uf2c9" block="MLX90614"
 namespace MLX90614 {
 let ObjTData = pins.createBuffer(8);
-let AmbTData = pins.createBuffer(4);
+let AmbTData = pins.createBuffer(8);
 let receivedBuffer = pins.createBuffer(32);
 let irData = pins.createBuffer(2);
 /**
