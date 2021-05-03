@@ -97,7 +97,7 @@ let irData = pins.createBuffer(1);
         serialBuffer[3] = 0x50
         serial.writeBuffer(serialBuffer)
         basic.pause(1);
-        receivedBuffer = serial.readBuffer(2);;
+        receivedBuffer = serial.readBuffer(4);;
             for (let i = 0; i < 4; i++) {
                 irData[i] = receivedBuffer[i];
             }
