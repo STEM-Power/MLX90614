@@ -14,17 +14,15 @@ let AmbTData = pins.createBuffer(8);
 let receivedBuffer = pins.createBuffer(32);
 let irData = pins.createBuffer(2);
 /**
-     * Setup MLX90614 module Tx Rx to micro:bit pins.
-     * 設定MLX90614的Tx、Rx連接腳位
-     * @param pinTX to pinTX ,eg: SerialPin.P13
-     * @param pinRX to pinRX ,eg: SerialPin.P14
+     * initiate Setup MLX90614 module.
+     * 設定MLX90614
     */
     //% weight=100
-    //% blockId="setSerial" block="set TX to %pinTX | RX to %pinRX"
-    export function setSerial(pinTX: SerialPin, pinRX: SerialPin): void {
+    //% blockId="Initiate" block="Initiate"
+    export function Initiate(): void {
         serial.redirect(
-            pinRX,
-            pinTX,
+            SerialPin.P8,
+            SerialPin.P16,
             BaudRate.BaudRate9600
         )
         
