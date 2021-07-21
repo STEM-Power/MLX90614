@@ -5,7 +5,7 @@
  *  */
 
 /**
- * MLX90614
+ * MLX90614 IR thermometer
  */
 //% weight=100 color=#0975ff icon="\uf2c9" block="MLX90614"
 namespace MLX90614 {
@@ -14,12 +14,12 @@ let AmbTData = pins.createBuffer(8);
 let receivedBuffer = pins.createBuffer(32);
 let irData = pins.createBuffer(2);
 /**
-     * initiate Setup MLX90614 module.
+     * initiate setup MLX90614 module.
      * 設定MLX90614
-    */
-    //% weight=100
-    //% blockId="Initiate" block="Initiate"
-    export function Initiate(): void {
+     */
+     //% weight=100
+     //% blockId="Initiate" block="Initiate"
+     export function Initiate(): void {
         serial.redirect(
             SerialPin.P8,
             SerialPin.P16,
@@ -28,10 +28,12 @@ let irData = pins.createBuffer(2);
         
     }
 
-
-//% weight=99
-    //% blockId="getObjT" block="Object Temperature"
-    export function getObjT(): number {
+     /**
+     * read the surface temperature of an object, temperature reading in Celsius
+     */
+     //% weight=99
+     //% blockId="getObjT" block="Object Temperature"
+     export function getObjT(): number {
         serial.setRxBufferSize(100)
         let serialBuffer = pins.createBuffer(8);
         serialBuffer[0] = 0x53
@@ -56,7 +58,10 @@ let irData = pins.createBuffer(2);
         return ObjT
 	}
 
-//% weight=98
+    /**
+    * read the ambient temperature, temperature reading in Celsius
+    */
+    //% weight=98
     //% blockId="getAmbT" block="Ambient Temperature"
     export function getAmbT(): number {
         serial.setRxBufferSize(100)
